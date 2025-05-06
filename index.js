@@ -12,7 +12,12 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8001;
 
-app.use(cors());
+app.use(cors({
+  origin: "https://ai-blog-client-three.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
 app.use(express.json());
 
 connectToMongoDB();
